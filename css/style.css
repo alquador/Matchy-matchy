@@ -1,0 +1,84 @@
+body {
+  background: blue;
+}
+h1 {
+  text-align: center;
+  color: #ffff00;
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px;
+}
+.parent-div {
+  width: 900px;
+  height: 700px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+  }
+  .game-card {
+    width: calc(25% - 20px);
+    height: calc(25% - 0px);
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+  }
+  .game-card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+  }
+  .hero, .card-back {
+    width: 75%;
+    height: 75%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 2px black;
+  }
+  #bp1, #bp2, #ww1, #ww2, #bw1, #bw2, #avenge1, #avenge2, #cap1, #cap2,
+  #hulk1, #hulk2, #thor1, #thor2, #iron1, #iron2, #back {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+    backface-visibility: hidden;
+    border-radius: 20%;
+  }
+  #play-again {
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 45%;
+    font-size: 20px;
+    background-color: red;
+    color: white;
+  }
+  .moves {
+    position: relative;
+    display: flex;
+    font-size: 30px;
+    margin-top: 6%;
+    margin-left: 20%;
+  }
+  .time {
+    position: relative;
+    display: flex;
+    font-size: 30px;
+    margin-top: -6.5%;
+    margin-left: 60%;
+  }
+.game-card.flip {
+  transform: rotateY(180deg);
+}
+.hero {
+  transform: rotateY(180deg);
+}
+
+
+
+
