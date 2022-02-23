@@ -1,3 +1,5 @@
+//.
+
 //querySelector to be able to access game componenets   
 const gameCards = document.querySelectorAll('.game-card');
 const playAgain = document.querySelector('#play-again')
@@ -109,7 +111,9 @@ function flipCard(event) {
     moves++
     movesMade.innerHTML = "Moves made: " + moves
     clicks = 0
-  } 
+  } if (playerChoice[0] === playerChoice[1]) {
+    
+  }
 }
 
 gameCards.forEach(card => card.addEventListener('click', flipCard))
