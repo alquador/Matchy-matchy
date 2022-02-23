@@ -1,26 +1,24 @@
-//.
-
 //querySelector to be able to access game componenets   
 const gameCards = document.querySelectorAll('.game-card');
 const playAgain = document.querySelector('#play-again')
 const movesMade = document.querySelector('.moves-made')
 const gameTimer = document.querySelector('.timer')
 const wonderWoman0 = document.querySelector('#ww1')
-const wonderWoman1 = document.querySelector('#ww2')
+const wonderWoman1 = document.querySelector('#ww1')
 const thor2 = document.querySelector('#thor1')
-const thor3 = document.querySelector('#thor2')
+const thor3 = document.querySelector('#thor1')
 const iron4 = document.querySelector('#iron1')
-const iron5 = document.querySelector('#iron2')
+const iron5 = document.querySelector('#iron1')
 const hulk6 = document.querySelector('#hulk1')
-const hulk7 = document.querySelector('#hulk2')
+const hulk7 = document.querySelector('#hulk1')
 const captainAmerica8 = document.querySelector('#cap1')
-const captainAmerica9 = document.querySelector('#cap2')
+const captainAmerica9 = document.querySelector('#cap1')
 const blackWidow10 = document.querySelector('#bw1')
-const blackWidow11 = document.querySelector('#bw2')
+const blackWidow11 = document.querySelector('#bw1')
 const blackPanther12 = document.querySelector('#bp1')
-const blackPanther13 = document.querySelector('#bp2')
+const blackPanther13 = document.querySelector('#bp1')
 const avengers14 = document.querySelector('#avenge1')
-const avengers15 = document.querySelector('#avenge2')
+const avengers15 = document.querySelector('#avenge1')
 
 //make an array of the card choices...may help with shuffling them for each new game
 const cardChoices = [wonderWoman0, wonderWoman1, thor2, thor3, iron4, iron5, hulk6, hulk7,
@@ -29,6 +27,7 @@ const cardChoices = [wonderWoman0, wonderWoman1, thor2, thor3, iron4, iron5, hul
 
 //set an empty array to push carch choices into, then check for match by index
 let playerChoice = []
+console.log(playerChoice)
 
 //Randomize where the cards are on the game board each time the game is played
 const shuffleCards = () => {
@@ -39,21 +38,24 @@ const shuffleCards = () => {
 }
 shuffleCards()
 
+
+
+
 //I want the first click and second click to be appended into playerChoice array
 //use .push or append maybe...
 //I want to be able to do a match check within the indices of the array
 //after there is a match I want to remove the event listener or 'flip' to matched cards
 //to disable cards from being reflipped
 //if there is no match between the two cards they need to flip back
-//const checkForMatch = () => {
-  //let choice1 = ""
-  //let choice2 = ""
-//} if (playerChoice[0] === playerChoice1) {
- // console.log("match")
- // )
-//}
-
-
+const checkForMatch = () => {
+ if (playerChoice[0] !== playerChoice[1]) {
+  console.log("no match")
+ } if (playerChoice[0] === playerChoice[1]) {
+  //stone card... can not toggle back
+ console.log("match")
+}
+playerChoice = []
+}
 
 const clearGame = () => { 
   window.location.reload()
@@ -63,7 +65,7 @@ const clearGame = () => {
 let clicks = 0
 let moves = 0
 movesMade.innerHTML = "Moves made: " + moves
-const clickCounter = () => {
+const clickCounter = () => { 
   clicks++
   console.log(clicks)
 }
@@ -90,33 +92,26 @@ startTimer()
 const stopTimer = () => {
   clearInterval(time)
 }
-//create a function that stops time and moves on the game board once the game is won
-//if (matched.length === 16)
-const gameWon = () => { 
-  //invoke the stopTimer function to stop the time
-  //stopTimer()
-  //reset moves to 0
-  //moves = 0 
-}
+
 //Flip card to reveal the character image
-function flipCard(event) {
+function flipCard (event) {
   this.classList.toggle('flip')
   clickCounter()
   console.log(event.target.id)
+  //let firstChoice = event.target.id
   playerChoice.push(event.target.id)
   if (clicks === 2) {
     //playerChoice.push(event.target.id)
     console.log(playerChoice)
-    //checkForMatch()
     moves++
     movesMade.innerHTML = "Moves made: " + moves
     clicks = 0
-  } if (playerChoice[0] === playerChoice[1]) {
-    
+    checkForMatch()
   }
 }
 
 gameCards.forEach(card => card.addEventListener('click', flipCard))
+
 
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
@@ -124,6 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 //If I can complete everything I want... maybe add a completion song
+//Add matches made under moves made
 
-
-
+//create a function that stops time and moves on the game board once the game is won
+//if (matched.length === 16)
+//const gameWon = () => { 
+  //invoke the stopTimer function to stop the time
+  //stopTimer()
+  //reset moves to 0
+  //moves = 0 

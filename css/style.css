@@ -8,8 +8,8 @@ h1 {
   font-size: 50px;
 }
 .parent-div {
-  width: 900px;
-  height: 700px;
+  width: 650px;
+  height: 600px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -41,8 +41,8 @@ h1 {
   #bp1, #bp2, #ww1, #ww2, #bw1, #bw2, #avenge1, #avenge2, #cap1, #cap2,
   #hulk1, #hulk2, #thor1, #thor2, #iron1, #iron2, #back {
     position: absolute;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     cursor: pointer;
     backface-visibility: hidden;
     border-radius: 20%;
@@ -64,17 +64,19 @@ h1 {
     position: relative;
     display: flex;
     font-size: 30px;
-    margin-top: 6%;
+    margin-top: 7.5%;
     margin-left: 15%;
     font-family: 'Wonder', sans-serif;
+    color: #ffff00;
   }
   .time {
     position: relative;
     display: flex;
     font-size: 30px;
-    margin-top: -6.5%;
-    margin-left: 50%;
+    margin-top: -7.5%;
+    margin-left: 45%;
     font-family: 'Wonder', sans-serif;
+    color: #ffff00;
   }
 .game-card.flip {
   transform: rotateY(180deg);

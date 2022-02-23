@@ -3,7 +3,7 @@
 ## Matching Game
 [Basic Rendering]("/Users/quadorfamily/sei/projects/game-project/Images/My First Board (2).jpg")
 
-[![First Rendering image]()]**IMAGE?
+![Gameboard](/Images/Gameboard.jpg)
 
 ### User Story
 The single user will be able to start clicking on the cards to reveal the image on the other side.  Toggling through as many times as needed to win the game.  A moves made counter will add 1 "Move made" for every two cards that are revealed.  The user will be able to see how many attempts it took to successful win and end the game.  There will also be a game timer, that stops once all cards are matched.
