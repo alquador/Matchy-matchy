@@ -4,7 +4,7 @@ body {
 h1 {
   text-align: center;
   color: #ffff00;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Wonder', sans-serif;
   font-size: 50px;
 }
 .parent-div {
@@ -57,20 +57,24 @@ h1 {
     font-size: 20px;
     background-color: red;
     color: white;
+    font-family: 'Wonder', sans-serif;
+    padding: 3px;
   }
   .moves {
     position: relative;
     display: flex;
     font-size: 30px;
     margin-top: 6%;
-    margin-left: 20%;
+    margin-left: 15%;
+    font-family: 'Wonder', sans-serif;
   }
   .time {
     position: relative;
     display: flex;
     font-size: 30px;
     margin-top: -6.5%;
-    margin-left: 60%;
+    margin-left: 50%;
+    font-family: 'Wonder', sans-serif;
   }
 .game-card.flip {
   transform: rotateY(180deg);

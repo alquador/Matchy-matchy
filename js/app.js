@@ -25,16 +25,10 @@ const cardChoices = [wonderWoman0, wonderWoman1, thor2, thor3, iron4, iron5, hul
     captainAmerica8, captainAmerica9, blackWidow10, blackWidow11, blackPanther12, blackPanther13,
     avengers14, avengers15]
 
-//Flip card to reveal the character image
-function flipCard() {
-  this.classList.toggle('flip')
-}
-
+//set an empty array to push carch choices into, then check for match by index
+let playerChoice = []
 
 //Randomize where the cards are on the game board each time the game is played
-//...try accessing through const gameCards
-//Need this to happen every time the game is reset... maybe attach to play again button
-//Maybe math.floor(math.random) to connect and change array index value
 const shuffleCards = () => {
   gameCards.forEach(shuffleIndexOrder => {
   let shuffle = Math.floor(Math.random() * 16)
@@ -43,59 +37,36 @@ const shuffleCards = () => {
 }
 shuffleCards()
 
-//function to check for card match
-//if there is a match made... need to make the revealed image stay in the revealed state
-//if no match the card needs to toggle back to the back of the card
-//const cardMatchCheck  = () => {
-  //if (card === card)
+//I want the first click and second click to be appended into playerChoice array
+//use .push or append maybe...
+//I want to be able to do a match check within the indices of the array
+//after there is a match I want to remove the event listener or 'flip' to matched cards
+//to disable cards from being reflipped
+//if there is no match between the two cards they need to flip back
+//const checkForMatch = () => {
+  //let choice1 = ""
+  //let choice2 = ""
+//} if (playerChoice[0] === playerChoice1) {
+ // console.log("match")
+ // )
 //}
-const checkForMatch = () => {
-  let matches = 0
-  for (let i = 0; i <= cardChoices.length; i++) {
-  if (wonderWoman0 === wonderWoman1) {
-    console.log('match')
-  } if (thor2 === thor3) {
-    console.log('match')
-  } if (iron4 === iron5) {
-    console.log('match')
-  } if (hulk6 === hulk7) {
-    console.log('match')
-  } if (captainAmerica8 === captainAmerica9) {
-    console.log('match')
-  } if (blackWidow10 === blackWidow11) {
-    console.log('match')
-  } if (blackPanther12 === blackPanther13) {
-    console.log('match')
-  } if (avengers14 === avengers15) {
-    console.log('match')
-  } else if (cardchoices = cardChoices) {
-    console.log('game won!')
-  }
-}
-}
 
 
 
-//function to flip cards back if there is not a match... back to the unrevealed state
-
-
-//function to evaluate if the board has all matches revealed
-//attach to play again button? Maybe...
-const clearGame = () => {
+const clearGame = () => { 
   window.location.reload()
 }
 
 //Attach a click counter to account for how many "Moves Made" will populate
-//NOT WORKING...plus I want the count to count 1 for every 2 clicks
 let clicks = 0
-movesMade.innerHTML = ""
+let moves = 0
+movesMade.innerHTML = "Moves made: " + moves
 const clickCounter = () => {
-  movesMade.innerHTML = "Moves made: " + clicks++
   clicks++
+  console.log(clicks)
 }
-clickCounter()
+
 //Attach a start and stop timer to clock how long it takes to sucessfully complete the game
-//setInterval or setTimeout
 //there are 1,000 milliseconds in 1 second
 let seconds = 0
 let minutes = 0
@@ -112,7 +83,8 @@ const startTimer = () => {
   }, 1000)
 }
 startTimer()
-//console.log(startTimer())
+
+//Need to invoke stop timer once all matches are made...
 const stopTimer = () => {
   clearInterval(time)
 }
@@ -124,11 +96,30 @@ const gameWon = () => {
   //reset moves to 0
   //moves = 0 
 }
-
+//Flip card to reveal the character image
+function flipCard(event) {
+  this.classList.toggle('flip')
+  clickCounter()
+  console.log(event.target.id)
+  playerChoice.push(event.target.id)
+  if (clicks === 2) {
+    //playerChoice.push(event.target.id)
+    console.log(playerChoice)
+    //checkForMatch()
+    moves++
+    movesMade.innerHTML = "Moves made: " + moves
+    clicks = 0
+  } 
+}
 
 gameCards.forEach(card => card.addEventListener('click', flipCard))
 
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
-  //clickCounter.addEventListener('click', movesMade)
+  movesMade.addEventListener('click', clickCounter)
 })
+
+//If I can complete everything I want... maybe add a completion song
+
+
+
