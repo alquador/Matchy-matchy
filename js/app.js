@@ -47,15 +47,19 @@ shuffleCards()
 //if there is no match between the two cards they need to flip back
 const checkForMatch = (event) => {
  if (playerChoice[0] !== playerChoice[1]) {
+   //this.classList.add('flip')
    //reverseFlip()
    //reverseFlip(playerChoice)
    //playerChoice.remove('flip')
    
   console.log("no match")
  } if (playerChoice[0] === playerChoice[1]) {
+  firstFlip.classList.remove('flip')
+  secondFlip.classList.remove('flip')
+   //stopFlip()
     //firstFlip.removeEventListener('click', flipCard())
     //secondFlip.removeEventListener('click', flipCard())
-  //gameCards.forEach(card => card.removeEventListener('click', flipCard))-locks the whole board!
+  //gameCards.forEach(card => card.removeEventListener('click', flipCard))//-locks the whole board!
   //gameCards.removeEventListener()
   //stone card... can not toggle back
   //reverseFlip()
@@ -133,8 +137,9 @@ function flipCard (event) {
   
 
 //function stopFlip (event) {
-  //firstFlip.removeEventListener('click', stopFlip())
-  //secondFlip.removeEventListener
+  //if (playerChoice[0] === playerChoice[1])
+  //firstFlip.removeEventListener('click', flipCard)
+  //secondFlip.removeEventListener('click', flipCard)
 //}
 
 gameCards.forEach(card => card.addEventListener('click', flipCard))
@@ -143,6 +148,7 @@ gameCards.forEach(card => card.addEventListener('click', flipCard))
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
   movesMade.addEventListener('click', clickCounter)
+  //stopFlip()
 })
 
 //If I can complete everything I want... maybe add a completion song
