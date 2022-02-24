@@ -27,7 +27,7 @@ const cardChoices = [wonderWoman0, wonderWoman1, thor2, thor3, iron4, iron5, hul
 
 //set an empty array to push carch choices into, then check for match by index
 let playerChoice = []
-console.log(playerChoice)
+
 
 //Randomize where the cards are on the game board each time the game is played
 const shuffleCards = () => {
@@ -41,20 +41,28 @@ shuffleCards()
 
 
 
-//I want the first click and second click to be appended into playerChoice array
-//use .push or append maybe...
-//I want to be able to do a match check within the indices of the array
+
 //after there is a match I want to remove the event listener or 'flip' to matched cards
 //to disable cards from being reflipped
 //if there is no match between the two cards they need to flip back
-const checkForMatch = () => {
+const checkForMatch = (event) => {
  if (playerChoice[0] !== playerChoice[1]) {
+   //reverseFlip()
+   //reverseFlip(playerChoice)
+   //playerChoice.remove('flip')
+   
   console.log("no match")
  } if (playerChoice[0] === playerChoice[1]) {
+    //firstFlip.removeEventListener('click', flipCard())
+    //secondFlip.removeEventListener('click', flipCard())
+  //gameCards.forEach(card => card.removeEventListener('click', flipCard))-locks the whole board!
+  //gameCards.removeEventListener()
   //stone card... can not toggle back
+  //reverseFlip()
  console.log("match")
-}
+} 
 playerChoice = []
+//flipCard()
 }
 
 const clearGame = () => { 
@@ -67,7 +75,7 @@ let moves = 0
 movesMade.innerHTML = "Moves made: " + moves
 const clickCounter = () => { 
   clicks++
-  console.log(clicks)
+  //console.log(clicks)
 }
 
 //Attach a start and stop timer to clock how long it takes to sucessfully complete the game
@@ -94,24 +102,43 @@ const stopTimer = () => {
 }
 
 //Flip card to reveal the character image
+let firstFlip = playerChoice[0]
+let secondFlip = playerChoice[1]
+
 function flipCard (event) {
   this.classList.toggle('flip')
+  if (clicks < 1) {
+  let firstFlip = event.target.id
+  console.log(firstFlip)
+  //console.log(playerChoice.length)
+  }
   clickCounter()
-  console.log(event.target.id)
-  //let firstChoice = event.target.id
-  playerChoice.push(event.target.id)
   if (clicks === 2) {
-    //playerChoice.push(event.target.id)
-    console.log(playerChoice)
+    let secondFlip = event.target.id
+    console.log(secondFlip)
+    //console.log(playerChoice)
     moves++
     movesMade.innerHTML = "Moves made: " + moves
     clicks = 0
-    checkForMatch()
   }
-}
+  if (playerChoice.length < 2) {
+    playerChoice.push(event.target.id)
+    console.log(playerChoice)
+  // if there are two items in playerChoice array time to checkFor Match
+  } if (playerChoice.length === 2) {
+    checkForMatch()
+    console.log(playerChoice)
+  } 
+  }
+  
+
+//function stopFlip (event) {
+  //firstFlip.removeEventListener('click', stopFlip())
+  //secondFlip.removeEventListener
+//}
 
 gameCards.forEach(card => card.addEventListener('click', flipCard))
-
+//gameCards.forEach(card => card.addEventListener('click', stopFlip))
 
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
