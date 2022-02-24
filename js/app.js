@@ -28,8 +28,8 @@ const cardChoices = [wonderWoman0, wonderWoman1, thor2, thor3, iron4, iron5, hul
 //set an empty array to push carch choices into, then check for match by index
 let playerChoice = []
 
-//set an empty array where matched cards are pushed into this array
-let matchedCards = []
+let matches = 0
+
 
 //Randomize where the cards are on the game board each time the game is played
 const shuffleCards = () => {
@@ -48,32 +48,26 @@ shuffleCards()
 //to disable cards from being reflipped
 //if there is no match between the two cards they need to flip back
 const checkForMatch = () => {
+    console.log(playerChoice[0])
+    console.log(playerChoice[1])
+    console.log("we have entered the timeout")
  if (playerChoice[0].id !== playerChoice[1].id) {
-   //this.classList.add('flip')
-   //reverseFlip()
-   //reverseFlip(playerChoice)
-   playerChoice[0].parentElement.classList.remove('flip')
-   playerChoice[1].parentElement.classList.remove('flip')
-   console.log(playerChoice[0])
-   console.log(playerChoice[1])
-   //this.classList.remove('flip')
+  setTimeout(flipUnmatched, 1000, playerChoice[0], playerChoice[1])
   console.log("Not a match, try again!")
- } if (playerChoice[0].id === playerChoice[1].id) {
-   //matchedCards.push(firstFlip)
-   //console.log(matchedCards)
-  //firstFlip.classList.remove('flip')
-  //secondFlip.classList.remove('flip')
-   //stopFlip()
-    //firstFlip.removeEventListener('click', flipCard())
-    //secondFlip.removeEventListener('click', flipCard())
-  //gameCards.forEach(card => card.removeEventListener('click', flipCard))//-locks the whole board!
-  //gameCards.removeEventListener()
-  //stone card... can not toggle back
-  //reverseFlip()
+   }
+  if (playerChoice[0].id === playerChoice[1].id) {
+    matches += 1
+    console.log(matches)
  console.log("Match made!")
 } 
-//flipCard()
 playerChoice = []
+}
+
+const flipUnmatched = (card1, card2) => {
+  console.log("inside flipUnmatched")
+  card1.parentElement.classList.remove('flip')
+  card2.parentElement.classList.remove('flip')
+  
 }
 
 const clearGame = () => { 
@@ -132,6 +126,7 @@ function flipCard (event) {
     moves++
     movesMade.innerHTML = "Moves made: " + moves
     clicks = 0
+
   }
   if (playerChoice.length < 2) {
     playerChoice.push(event.target)
@@ -140,25 +135,16 @@ function flipCard (event) {
   } if (playerChoice.length === 2) {
     checkForMatch()
     console.log(playerChoice)
-  } //else if (playerChoice.length > 2) {
-    //playerChoice = []
-  //}
+  } 
   }
   
 
-//function stopFlip (event) {
-  //if (playerChoice[0] === playerChoice[1])
-  //firstFlip.removeEventListener('click', flipCard)
-  //secondFlip.removeEventListener('click', flipCard)
-//}
 
-gameCards.forEach(card => card.addEventListener('click', flipCard))
-//gameCards.forEach(card => card.addEventListener('click', stopFlip))
 
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
   movesMade.addEventListener('click', clickCounter)
-  //stopFlip()
+  gameCards.forEach(card => card.addEventListener('click', flipCard))
 })
 
 //If I can complete everything I want... maybe add a completion song
@@ -170,4 +156,4 @@ document.addEventListener('DOMContentLoaded', () => {
   //invoke the stopTimer function to stop the time
   //stopTimer()
   //reset moves to 0
-  //moves = 0 
+  

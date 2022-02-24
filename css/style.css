@@ -84,9 +84,7 @@ h1 {
 .hero {
   transform: rotateY(180deg);
 }
-.game-card.reverse-flip {
-  transform: rotateY(180deg)
-}
+
 
 
 
