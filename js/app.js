@@ -4,6 +4,7 @@ const playAgain = document.querySelector('#play-again')
 const movesMade = document.querySelector('.moves-made')
 const gameTimer = document.querySelector('.timer')
 const gameMatch = document.querySelector('.game-match')
+const winningMessage = document.querySelector('#winning-message')
 const wonderWoman0 = document.querySelector('#ww1')
 const wonderWoman1 = document.querySelector('#ww1')
 const thor2 = document.querySelector('#thor1')
@@ -34,11 +35,13 @@ const gameWon = () => {
   //let matches = 0
   if (matches === 8) {
     stopTimer()
+    winningMessage.innerText = "Game Won!"
+    wonderWomanSong.play()
   }
   console.log("Game Won! Number of matches: " + matches)
 }
 
-
+const wonderWomanSong = new Audio('/Users/quadorfamily/sei/projects/game-project/Audio/8d82b5_Wonder_Woman_Theme_Song.mp3')
 //Randomize where the cards are on the game board each time the game is played
 const shuffleCards = () => {
   gameCards.forEach(shuffleIndexOrder => {
@@ -129,7 +132,7 @@ function flipCard (event) {
     console.log(secondFlip)
     //console.log(playerChoice)
     moves++
-    //movesMade.innerHTML = "Moves made: " + moves
+    movesMade.innerHTML = "Moves made: " + moves
     clicks = 0
   }
   if (playerChoice.length < 2) {
