@@ -3,6 +3,7 @@ const gameCards = document.querySelectorAll('.game-card');
 const playAgain = document.querySelector('#play-again')
 const movesMade = document.querySelector('.moves-made')
 const gameTimer = document.querySelector('.timer')
+const gameMatch = document.querySelector('.game-match')
 const wonderWoman0 = document.querySelector('#ww1')
 const wonderWoman1 = document.querySelector('#ww1')
 const thor2 = document.querySelector('#thor1')
@@ -29,6 +30,12 @@ const cardChoices = [wonderWoman0, wonderWoman1, thor2, thor3, iron4, iron5, hul
 let playerChoice = []
 
 let matches = 0
+const gameWon = () => {
+  if (matches.length === 8) {
+    stopTimer()
+    console.log("Game Won!")
+  }
+}
 
 
 //Randomize where the cards are on the game board each time the game is played
@@ -40,25 +47,22 @@ const shuffleCards = () => {
 }
 shuffleCards()
 
-
-
-
-
 //after there is a match I want to remove the event listener or 'flip' to matched cards
 //to disable cards from being reflipped
 //if there is no match between the two cards they need to flip back
 const checkForMatch = () => {
     console.log(playerChoice[0])
     console.log(playerChoice[1])
-    console.log("we have entered the timeout")
+    //console.log("we have entered the timeout")
  if (playerChoice[0].id !== playerChoice[1].id) {
   setTimeout(flipUnmatched, 1000, playerChoice[0], playerChoice[1])
   console.log("Not a match, try again!")
    }
   if (playerChoice[0].id === playerChoice[1].id) {
     matches += 1
-    console.log(matches)
- console.log("Match made!")
+    gameMatch.innerHTML = "Matches: " + matches + "/8"
+    //console.log(matches)
+    //console.log("Match made!")
 } 
 playerChoice = []
 }
@@ -72,15 +76,6 @@ const flipUnmatched = (card1, card2) => {
 
 const clearGame = () => { 
   window.location.reload()
-}
-
-//Attach a click counter to account for how many "Moves Made" will populate
-let clicks = 0
-let moves = 0
-movesMade.innerHTML = "Moves made: " + moves
-const clickCounter = () => { 
-  clicks++
-  //console.log(clicks)
 }
 
 //Attach a start and stop timer to clock how long it takes to sucessfully complete the game
@@ -106,6 +101,14 @@ const stopTimer = () => {
   clearInterval(time)
 }
 
+//Attach a click counter to account for how many "Moves Made" will populate
+let clicks = 0
+let moves = 0
+const clickCounter = () => { 
+  clicks++
+  //console.log(clicks)
+}
+
 //Flip card to reveal the character image
 let firstFlip = playerChoice[0]
 let secondFlip = playerChoice[1]
@@ -124,9 +127,8 @@ function flipCard (event) {
     console.log(secondFlip)
     //console.log(playerChoice)
     moves++
-    movesMade.innerHTML = "Moves made: " + moves
+    //movesMade.innerHTML = "Moves made: " + moves
     clicks = 0
-
   }
   if (playerChoice.length < 2) {
     playerChoice.push(event.target)
@@ -137,14 +139,13 @@ function flipCard (event) {
     console.log(playerChoice)
   } 
   }
-  
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
   movesMade.addEventListener('click', clickCounter)
   gameCards.forEach(card => card.addEventListener('click', flipCard))
+  gameWon()
 })
 
 //If I can complete everything I want... maybe add a completion song

@@ -60,21 +60,30 @@ h1 {
     font-family: 'Wonder', sans-serif;
     padding: 3px;
   }
-  .moves {
+  .moves-made {
     position: relative;
     display: flex;
     font-size: 30px;
-    margin-top: 7.5%;
+    margin-top: 8.5%;
     margin-left: 15%;
     font-family: 'Wonder', sans-serif;
     color: #ffff00;
   }
-  .time {
+  .timer {
     position: relative;
     display: flex;
     font-size: 30px;
-    margin-top: -7.5%;
+    margin-top: 0%;
     margin-left: 45%;
+    font-family: 'Wonder', sans-serif;
+    color: #ffff00;
+  }
+  .game-match {
+    position: relative;
+    display: flex;
+    font-size: 30px;
+    margin-top: -4%;
+    margin-left: 15%;
     font-family: 'Wonder', sans-serif;
     color: #ffff00;
   }
