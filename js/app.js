@@ -37,6 +37,7 @@ const gameWon = () => {
     stopTimer()
     winningMessage.innerText = "Game Won!"
     wonderWomanSong.play()
+    gameCards.forEach(card => card.removeEventListener('click', flipCard))
   }
   console.log("Game Won! Number of matches: " + matches)
 }
@@ -144,8 +145,6 @@ function flipCard (event) {
     console.log(playerChoice)
   } 
   }
-
-
 document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
   movesMade.addEventListener('click', clickCounter)
