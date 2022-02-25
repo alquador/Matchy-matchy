@@ -31,10 +31,11 @@ let playerChoice = []
 
 let matches = 0
 const gameWon = () => {
-  if (matches.length === 8) {
+  //let matches = 0
+  if (matches === 8) {
     stopTimer()
-    console.log("Game Won!")
   }
+  console.log("Game Won! Number of matches: " + matches)
 }
 
 
@@ -61,13 +62,13 @@ const checkForMatch = () => {
   if (playerChoice[0].id === playerChoice[1].id) {
     matches += 1
     gameMatch.innerHTML = "Matches: " + matches + "/8"
-    gameWon()
-    //console.log(matches)
-    //console.log("Match made!")
+    console.log("matches: " + matches)
+    if (matches === 8) {
+      gameWon()
+    }
 } 
 playerChoice = []
 }
-
 const flipUnmatched = (card1, card2) => {
   console.log("inside flipUnmatched")
   card1.parentElement.classList.remove('flip')
@@ -146,16 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
   playAgain.addEventListener('click', clearGame)
   movesMade.addEventListener('click', clickCounter)
   gameCards.forEach(card => card.addEventListener('click', flipCard))
-  gameWon()
 })
 
 //If I can complete everything I want... maybe add a completion song
-//Add matches made under moves made
 
-//create a function that stops time and moves on the game board once the game is won
-//if (matched.length === 16)
-//const gameWon = () => { 
-  //invoke the stopTimer function to stop the time
-  //stopTimer()
-  //reset moves to 0
+
   
