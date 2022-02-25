@@ -61,6 +61,7 @@ const checkForMatch = () => {
   if (playerChoice[0].id === playerChoice[1].id) {
     matches += 1
     gameMatch.innerHTML = "Matches: " + matches + "/8"
+    gameWon()
     //console.log(matches)
     //console.log("Match made!")
 } 
