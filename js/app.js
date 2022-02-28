@@ -91,7 +91,7 @@ let minutes = 0
 let time = ""
 let timeStart = false
 const startTimer = () => {
-  time = setInterval(function() {
+    time = setInterval(function() {
     seconds++
     if(seconds === 60) {
       minutes++
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   gameCards.forEach(card => card.addEventListener('click', flipCard))
 })
 
-//If I can complete everything I want... maybe add a completion song
+
 
 
   
