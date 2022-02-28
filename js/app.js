@@ -39,7 +39,7 @@ const gameWon = () => {
     wonderWomanSong.play()
     gameCards.forEach(card => card.removeEventListener('click', flipCard))
   }
-  console.log("Game Won! Number of matches: " + matches)
+  //console.log("Game Won! Number of matches: " + matches)
 }
 
 const wonderWomanSong = new Audio('Audio/8d82b5_Wonder_Woman_Theme_Song.mp3')
@@ -56,23 +56,28 @@ shuffleCards()
 //to disable cards from being reflipped
 //if there is no match between the two cards they need to flip back
 const checkForMatch = () => {
-    console.log(playerChoice[0])
-    console.log(playerChoice[1])
+    //console.log(playerChoice[0])
+    //console.log(playerChoice[1])
     //console.log("we have entered the timeout")
  if (playerChoice[0].id !== playerChoice[1].id) {
+   //use setTime out because the cards are flipping so fast that they do not reveal the image
   setTimeout(flipUnmatched, 1000, playerChoice[0], playerChoice[1])
-  console.log("Not a match, try again!")
+  //console.log("Not a match, try again!")
    }
+   //if there is a match made, need to log the match (.../8) 
+   //if there are 8 matches, need the gameWon function to be invoked
   if (playerChoice[0].id === playerChoice[1].id) {
     matches += 1
     gameMatch.innerHTML = "Matches: " + matches + "/8"
-    console.log("matches: " + matches)
+    //console.log("matches: " + matches)
     if (matches === 8) {
       gameWon()
     }
 } 
+//clear the array so the next two chosen cards can be evaluated
 playerChoice = []
 }
+//function to have the unmatched cards flip the unrevealed state
 const flipUnmatched = (card1, card2) => {
   console.log("inside flipUnmatched")
   card1.parentElement.classList.remove('flip')
@@ -102,7 +107,7 @@ const startTimer = () => {
 }
 startTimer()
 
-//Need to invoke stop timer once all matches are made...
+//Need to invoke stop timer once all matches are made...Need a gameWon function
 const stopTimer = () => {
   clearInterval(time)
 }
@@ -119,9 +124,11 @@ const clickCounter = () => {
 let firstFlip = playerChoice[0]
 let secondFlip = playerChoice[1]
 
+
+//flipCard function to target the specific card being clicked on (use event.target)
 function flipCard (event) {
   this.classList.add('flip')
-  console.log(this.classList)
+  //console.log(this.classList)
   if (clicks < 1) {
   let firstFlip = event.target.id
   console.log(firstFlip)
@@ -138,11 +145,11 @@ function flipCard (event) {
   }
   if (playerChoice.length < 2) {
     playerChoice.push(event.target)
-    console.log(playerChoice)
+    //console.log(playerChoice)
   // if there are two items in playerChoice array time to checkFor Match
   } if (playerChoice.length === 2) {
     checkForMatch()
-    console.log(playerChoice)
+    //console.log(playerChoice)
   } 
   }
 document.addEventListener('DOMContentLoaded', () => {
