@@ -42,7 +42,7 @@ const gameWon = () => {
   console.log("Game Won! Number of matches: " + matches)
 }
 
-const wonderWomanSong = new Audio('/Users/quadorfamily/sei/projects/game-project/Audio/8d82b5_Wonder_Woman_Theme_Song.mp3')
+const wonderWomanSong = new Audio('Audio/8d82b5_Wonder_Woman_Theme_Song.mp3')
 //Randomize where the cards are on the game board each time the game is played
 const shuffleCards = () => {
   gameCards.forEach(shuffleIndexOrder => {
