@@ -39,7 +39,7 @@ const gameWon = () => {
     wonderWomanSong.play()
     gameCards.forEach(card => card.removeEventListener('click', flipCard))
   }
-  console.log("Game Won! Number of matches: " + matches)
+  //console.log("Game Won! Number of matches: " + matches)
 }
 
 const wonderWomanSong = new Audio('/Users/quadorfamily/sei/projects/game-project/Audio/8d82b5_Wonder_Woman_Theme_Song.mp3')
@@ -56,8 +56,8 @@ shuffleCards()
 //to disable cards from being reflipped
 //if there is no match between the two cards they need to flip back
 const checkForMatch = () => {
-    console.log(playerChoice[0])
-    console.log(playerChoice[1])
+    //console.log(playerChoice[0])
+    //console.log(playerChoice[1])
     //console.log("we have entered the timeout")
  if (playerChoice[0].id !== playerChoice[1].id) {
   setTimeout(flipUnmatched, 1000, playerChoice[0], playerChoice[1])
@@ -66,7 +66,7 @@ const checkForMatch = () => {
   if (playerChoice[0].id === playerChoice[1].id) {
     matches += 1
     gameMatch.innerHTML = "Matches: " + matches + "/8"
-    console.log("matches: " + matches)
+    //console.log("matches: " + matches)
     if (matches === 8) {
       gameWon()
     }
@@ -121,7 +121,7 @@ let secondFlip = playerChoice[1]
 
 function flipCard (event) {
   this.classList.add('flip')
-  console.log(this.classList)
+  //console.log(this.classList)
   if (clicks < 1) {
   let firstFlip = event.target.id
   console.log(firstFlip)
@@ -142,7 +142,7 @@ function flipCard (event) {
   // if there are two items in playerChoice array time to checkFor Match
   } if (playerChoice.length === 2) {
     checkForMatch()
-    console.log(playerChoice)
+    //console.log(playerChoice)
   } 
   }
 document.addEventListener('DOMContentLoaded', () => {
